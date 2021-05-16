@@ -35,6 +35,7 @@ class CrawlImmobiliare(Crawler):
             # 0: price
             # 1: number of rooms
             # 2: size of the apartment
+            # 3: floor
             price_li = row.find("li", {"class": "lif__pricing"})
 
             price = re.match(
