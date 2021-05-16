@@ -48,6 +48,10 @@ class CrawlImmobiliare(Crawler):
 
             rooms = details_list[1].find("span").text.strip() if len(details_list) > 1 else "?"
             size = details_list[2].find("span").text.strip() if len(details_list) > 2 else "?"
+            if len(details_list) > 4 and details_list[4].find("abbr") is not None:
+                floor = details_list[4].find("abbr").text.strip() if len(details_list) > 4 else "?"
+            else:
+                floor = 'nd'
 
             address_match = re.match(r"\w+\s(.*)$", title)
             address = address_match[1] if address_match else ""
@@ -60,6 +64,7 @@ class CrawlImmobiliare(Crawler):
                 'price': price,
                 'size': size,
                 'rooms': rooms,
+                'floor': floor,
                 'address': address,
                 'crawler': self.get_name()
             }

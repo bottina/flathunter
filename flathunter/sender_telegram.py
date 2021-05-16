@@ -25,6 +25,7 @@ class SenderTelegram(Processor):
             title=expose['title'],
             rooms=expose['rooms'],
             size=expose['size'],
+            floor=expose['floor'],
             price=expose['price'],
             url=expose['url'],
             address=expose['address'],
